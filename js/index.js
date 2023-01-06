@@ -16,13 +16,12 @@ async function getUserInfoFromAPI(e)
 {
     clearPrevInfo()
     let name = userNameInput.value;
-    console.log(name);
     e.preventDefault();
     let favLang = await findFavoriteLanguages(name)
-    console.log(favLang);
+
     //checks if the user info is in the local storage or not
     let data = await JSON.parse(window.localStorage.getItem(name));
-    console.log(data);
+
     // if user info is not in the local storage
     if (data == null)
     {
@@ -42,7 +41,6 @@ async function getUserInfoFromAPI(e)
             return Promise.reject(`Request failed with error ${response.status}`);
         }
         let obj = await response.json();
-        console.log(obj)
 
         setUserInfo(obj, favLang);
         setUserInfoInLocalStorage(name, obj)
@@ -59,7 +57,6 @@ async function getUserInfoFromAPI(e)
 // change value of user info fieldset 
 function setUserInfo(obj, favLanguage)
 {
-    console.log(favLanguage)
     {
         if (obj.name != null)
             userName.innerHTML = obj.name
@@ -117,7 +114,6 @@ function setUserInfoInLocalStorage(name, obj)
     try{
         let user_info_object = createUserObject(obj)
         window.localStorage.setItem(name, JSON.stringify(user_info_object));
-        console.log(user_info_object);
     }
     catch (e)
     {
