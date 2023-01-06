@@ -12,6 +12,7 @@ const errorDisplay = document.getElementById('error_display')
 // the response will fetch from the local storage and if not, it results to a new api call.
 async function getUserInfoFromAPI(e)
 {
+    clearPrevInfo()
     let name = userNameInput.value;
     console.log(name);
     e.preventDefault();
@@ -115,7 +116,16 @@ function setUserInfoInLocalStorage(name, obj)
 
 }
 
-
+// clear previous user data
+function clearPrevInfo()
+{
+    userName.innerHTML = "<span>User Name</spane>";
+    userLocation.innerHTML = "<span>User Location</spane>";
+    userEmail.innerHTML = "<span>User Email</spane>";
+    userBio.innerHTML = "<span>User Bio</spane>";
+    userPhoto.src = "./images/background.jpg";
+    errorDisplay.style.display = "none";
+}
 
 
 // display errors which may be produced and removes the error message from screen after 5 seconds.
