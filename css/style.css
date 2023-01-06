@@ -1,0 +1,120 @@
+/*
+    Setting the background image which covers the whole browser window
+*/
+
+body {
+    background: url("../images/octcat_landscape.png") no-repeat center center fixed;
+    background-size: cover;
+}
+
+/*
+    Defining the style of the main container
+*/
+.container {
+    width: 50%;
+    min-height: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: white;
+    opacity: 0.6;
+    padding: 5px;
+    z-index: 100;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/*
+    Defining the style of the fieldset header
+*/
+.header {
+    position: relative;
+    color: saddlebrown;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+/*
+    Defining the style of the form card
+*/
+.card {
+    width: 40%;
+}
+
+/*
+    Defining the style of the fieldset
+*/
+.fieldset {
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/*
+    Defining the style of the buttons
+*/
+.button {
+    width: 110px;
+    height: 35px;
+    text-align: center;
+    margin: 5px;
+    background-color:  #963B00;
+    color: white;
+    border-radius: 0;
+}
+
+
+/*
+    Defining the overall design of rows (used in the left fieldset)
+ */
+.rows{
+    width: 400px;
+}
+
+/*
+    Defining the overall design of columns (used in the left fieldset)
+ */
+.cols{
+    height: 80%;
+}
+
+/*
+    Defining the overall design of the first row of the left fieldset
+ */
+.row1{
+    height: 150px;
+}
+
+/*
+    Defining the overall design of the second row of the left fieldset
+ */
+.row2{
+    height: 50px;
+}
+
+/*
+    Defining the overall design of the first columns of the left fieldset
+ */
+.col1{
+    width: 50%;
+    float: left;
+}
+
+/*
+    Defining the overall design of the second columns of the left fieldset
+ */
+.col2{
+    width: 50%;
+    float: right;
+    text-align: center;
+}
+
+

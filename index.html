@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <title>Github Info Fetcher</title>
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/png" href="./images/background.jpg" />
+</head>
+
+<body>
+    <div class="container">
+        <!-- information card part -->
+        <div class="submit_card card">
+            <fieldset>
+                <div id="row1" class="rows row1">
+                    <div class="cols col1">
+                        <div >
+                            <img id="user_photo" src="./images/background.jpg" width="150" height="150">
+                        </div>
+                    </div>
+                    <div class="cols col2">
+                        <div id="user_name">
+                            User Name
+                        </div>
+                        <br>
+                        <div id="user_email">
+                            User Email
+                        </div>
+                        <br>
+                        <div id="user_location">
+                            User Location
+                        </div>
+                    </div>
+                </div>
+
+                <div id="row2" class="rows row2">
+                    <div class="col1">
+                        <div id="user_bio">
+                            User Bio
+                        </div>
+                    </div>
+                    <div class="col2">
+                        <div id="error_display"></div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <!-- input card part -->
+        <div class="submit_card card">
+            <fieldset class="fieldset">
+                <input type="text" id="user_id" maxlength="255" pattern="[A-Za-z ]+" required>
+                <br>
+                <button class="submit button">submit</button><br>
+            </fieldset>
+        </div>
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
