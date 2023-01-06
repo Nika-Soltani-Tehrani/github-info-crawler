@@ -16,10 +16,11 @@
         <!-- information card part -->
         <div class="submit_card card">
             <fieldset>
+                <legend class="legend">User Data</legend>
                 <div id="row1" class="rows row1">
                     <div class="cols col1">
                         <div >
-                            <img id="user_photo" src="./images/background.jpg" width="150" height="150">
+                            <img id="user_photo" src="./images/background.jpg" width="120" height="120">
                         </div>
                     </div>
                     <div class="cols col2">
@@ -33,6 +34,10 @@
                         <br>
                         <div id="user_location">
                             User Location
+                        </div>
+                        <br>
+                        <div id="user_lang">
+                            User Language
                         </div>
                     </div>
                 </div>
@@ -52,7 +57,8 @@
         <!-- input card part -->
         <div class="submit_card card">
             <fieldset class="fieldset">
-                <input type="text" id="user_id" maxlength="255" pattern="[A-Za-z ]+" required>
+                <legend class="legend">Username Input</legend>
+                <input type="text" id="user_id"  maxlength="255" pattern="[A-Za-z ]+" required>
                 <br>
                 <button class="submit button">submit</button><br>
             </fieldset>

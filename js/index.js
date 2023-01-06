@@ -1,3 +1,4 @@
+// variables
 const userNameInput = document.querySelector('#user_id');
 const submitButton = document.querySelector('.submit');
 const userPhoto = document.getElementById('user_photo')
@@ -5,6 +6,7 @@ const userName = document.getElementById('user_name')
 const userEmail = document.getElementById('user_email')
 const userLocation = document.getElementById('user_location')
 const userBio = document.getElementById('user_bio')
+const userLang = document.getElementById('user_lang')
 const errorDisplay = document.getElementById('error_display')
 
 
@@ -16,7 +18,8 @@ async function getUserInfoFromAPI(e)
     let name = userNameInput.value;
     console.log(name);
     e.preventDefault();
-
+    let favLang = await findFavoriteLanguages(name)
+    console.log(favLang);
     //checks if the user info is in the local storage or not
     let data = await JSON.parse(window.localStorage.getItem(name));
     console.log(data);
@@ -41,21 +44,22 @@ async function getUserInfoFromAPI(e)
         let obj = await response.json();
         console.log(obj)
 
-        setUserInfo(obj);
+        setUserInfo(obj, favLang);
         setUserInfoInLocalStorage(name, obj)
     }
     else
     {
         let user_info_object = await JSON.parse(window.localStorage.getItem(name));
-        setUserInfo(user_info_object)
+        setUserInfo(user_info_object, favLang)
         console.log("Get data from local storage")
     }
     
 }
 
 // change value of user info fieldset 
-function setUserInfo(obj) 
+function setUserInfo(obj, favLanguage)
 {
+    console.log(favLanguage)
     {
         if (obj.name != null)
             userName.innerHTML = obj.name
@@ -79,6 +83,12 @@ function setUserInfo(obj)
             userBio.innerHTML = obj.bio
         else
             userBio.innerHTML = "<span>No Biography Is Provided</spane>";
+    }
+    {
+        if (favLanguage !== null)
+            userLang.innerHTML = "<span>Favorite Language Is </spane>" + favLanguage
+        else
+            userLang.innerHTML = "<span>Favorite Language Is Not Provided</spane>";
     }
     {
         if (obj.avatar_url != null)
@@ -114,6 +124,28 @@ function setUserInfoInLocalStorage(name, obj)
         errorDisplayFunction("Saving user data in the local storage failed.");
     }
 
+}
+
+//find top five favorite user languages
+async function findFavoriteLanguages(username)
+{
+    let response = await fetch(`https://api.github.com/users/${username}/repos`);
+    let langObj = await response.json();
+
+    // get first five repos
+    let firstFiveLang = langObj.slice(0, 5);
+    console.log(firstFiveLang)
+    let langOccurrence = firstFiveLang.reduce((a, obj)=>{
+        a[obj.language] =  (a[obj.language] || 0 ) + 1;
+        return a
+    },{});
+
+
+    let sortedLanguages = Object.keys(langOccurrence)
+        .sort((a,b) => langOccurrence[b] - langOccurrence[a] )
+        .slice(0,1)
+
+    return sortedLanguages[0]
 }
 
 // clear previous user data
